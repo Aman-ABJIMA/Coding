@@ -4,34 +4,45 @@
     {
         static void Main(string[] args)
         {
-            Patterns.Pattern01(5, 5);
-            Console.WriteLine();
-          
-            Patterns.Pattern02(15, 10);
-            Console.WriteLine();
-            
-            Patterns.Pattern03(5,5);
+            string patternName = string.Empty;
+            patternName = "Square Fill Pattern";
+            Patterns.Pattern01(5, 5, patternName);
             Console.WriteLine();
 
-            Patterns.Pattern04(5,5);
+            patternName = "Square Hollow Pattern";
+            Patterns.Pattern02(15, 10, patternName);
             Console.WriteLine();
 
-            Patterns.Pattern05(5, 5);
+            patternName = "Right-aligned line pattern";
+            Patterns.Pattern03(5,5, patternName);
             Console.WriteLine();
 
-            Patterns.Pattern06(5, 5);
+            patternName = "Left-aligned line pattern";
+            Patterns.Pattern04(5,5, patternName);
             Console.WriteLine();
 
-            Patterns.Pattern07(5, 5);
+            patternName = "Right Half Pyramid Pattern";
+            Patterns.Pattern05(5, 5 , patternName);
             Console.WriteLine();
 
-            Patterns.Pattern08(5, 5);
+            patternName = "Reverse Right Half Pyramid Pattern";
+            Patterns.Pattern06(5, 5 , patternName);
             Console.WriteLine();
 
-            Patterns.Pattern09(5, 5);
+            patternName = "Left Half Pyramid Pattern";
+            Patterns.Pattern07(5, 5 , patternName);
             Console.WriteLine();
 
-            Patterns.Pattern10(5, 5);
+            patternName = "Reverse Left Half Pyramid Pattern";
+            Patterns.Pattern08(5, 5 , patternName);
+            Console.WriteLine();
+
+            patternName = "Triangle Star Pattern or Pyramid Pattern";
+            Patterns.Pattern09(5, 5 , patternName);
+            Console.WriteLine();
+
+            patternName = "";
+            Patterns.Pattern10(5, 5 , patternName);
             Console.WriteLine();
 
             List<int> list = new List<int>() {11,2,13,1,4,14,4,14,5,5,15,6};
@@ -48,6 +59,40 @@
             {
                 Console.WriteLine(e);
             }
+
+            Console.WriteLine();
+
+            Console.Write(ContinueWithList.Number(5));
+            Console.WriteLine();
+
+            patternName = "Number Triangle Pattern";
+            Patterns.Pattern11(5, patternName);
+            Console.WriteLine();
+
+            patternName = "Number-increasing Pyramid Pattern";
+            Patterns.Pattern12(5, patternName);
+            Console.WriteLine();
+
+            patternName = "Number-increasing reverse Pyramid Pattern";
+            Patterns.Pattern13(5 , patternName);
+            Console.WriteLine();
+
+            patternName = "Number-changing Pyramid Pattern";
+            Patterns.Pattern14(5 , patternName);
+            Console.WriteLine();
+
+            patternName = "Zero-One Triangle Pattern";
+            Patterns.Pattern15(5 , patternName);
+            Console.WriteLine();
+
+            patternName = "Palindrome Triangle Pattern";
+            Patterns.Pattern16(5 , patternName);
+            Console.WriteLine();
+
+            patternName = "Palindrome Triangle Pattern";
+            Patterns.Pattern17(5, patternName);
+            Console.WriteLine();
+
         }
     }
 }

@@ -2,6 +2,8 @@
 {
     public static class ContinueWithList
     {
+        private static int nth = 0;
+
         public static List<int> List01(List<int> elements)
         {
             int temp = 0;
@@ -41,6 +43,12 @@
                 }
             }
             return elements;
+        }
+        public static int Number(int n)
+        {
+            if (n > 1)
+              Console.WriteLine(Number(n - 1));
+            return n;
         }
     }
 }
