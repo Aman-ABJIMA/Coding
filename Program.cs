@@ -1,97 +1,74 @@
-﻿namespace Patterns
+﻿using CodingPractice;
+using System.Reflection;
+
+namespace Patterns
 {
     public class Program
     {
         static void Main(string[] args)
         {
+            Type myClassType1 = typeof(Patterns);
+            Type myClassType2 = typeof(Constant);
+
+            int constantCount = 0;
+            string methodName = string.Empty;
             string patternName = string.Empty;
-            patternName = "Square Fill Pattern";
-            Patterns.Pattern01(5, 5, patternName);
-            Console.WriteLine();
+            string constantName = string.Empty;
+            string constantValue = string.Empty;
 
-            patternName = "Square Hollow Pattern";
-            Patterns.Pattern02(15, 10, patternName);
-            Console.WriteLine();
+            FieldInfo[] fields = myClassType2.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 
-            patternName = "Right-aligned line pattern";
-            Patterns.Pattern03(5,5, patternName);
-            Console.WriteLine();
-
-            patternName = "Left-aligned line pattern";
-            Patterns.Pattern04(5,5, patternName);
-            Console.WriteLine();
-
-            patternName = "Right Half Pyramid Pattern";
-            Patterns.Pattern05(5, 5 , patternName);
-            Console.WriteLine();
-
-            patternName = "Reverse Right Half Pyramid Pattern";
-            Patterns.Pattern06(5, 5 , patternName);
-            Console.WriteLine();
-
-            patternName = "Left Half Pyramid Pattern";
-            Patterns.Pattern07(5, 5 , patternName);
-            Console.WriteLine();
-
-            patternName = "Reverse Left Half Pyramid Pattern";
-            Patterns.Pattern08(5, 5 , patternName);
-            Console.WriteLine();
-
-            patternName = "Triangle Star Pattern or Pyramid Pattern";
-            Patterns.Pattern09(5, 5 , patternName);
-            Console.WriteLine();
-
-            patternName = "";
-            Patterns.Pattern10(5, 5 , patternName);
-            Console.WriteLine();
-
-            List<int> list = new List<int>() {11,2,13,1,4,14,4,14,5,5,15,6};
-            var result = ContinueWithList.List01(list);
-            foreach(var e in result)
+            // Filter the constants (IsLiteral is true for constants)
+            foreach (var field in fields)
             {
-                Console.WriteLine(e);
-            }
-            Console.WriteLine();
-
-            List<int> list1 = new List<int>() { 11, 2, 13, 1, 4, 14, 4, 14, 5, 5, 15, 6 };
-            var result2 = ContinueWithList.List02(list1);
-            foreach (var e in result2)
-            {
-                Console.WriteLine(e);
+                if (field.IsLiteral && !field.IsInitOnly)  // Ensure the field is a constant and not readonly
+                {
+                    constantCount++;
+                }
             }
 
-            Console.WriteLine();
 
-            Console.Write(ContinueWithList.Number(5));
-            Console.WriteLine();
+            for (int i = 1; i <= constantCount; i++)
+            {
+                constantName = methodName = i < 10 ? $"Pattern0{i}" : $"Pattern{i}";
+                // Get the MethodInfo for the static method
+                MethodInfo methodInfo = myClassType1.GetMethod(methodName, BindingFlags.Public | BindingFlags.Static);
+                // Get the fieldInfo for the static fields
+                FieldInfo fieldInfo = myClassType2.GetField(constantName, BindingFlags.Public | BindingFlags.Static);
 
-            patternName = "Number Triangle Pattern";
-            Patterns.Pattern11(5, patternName);
-            Console.WriteLine();
+                if (fieldInfo != null)
+                {
+                    // Access the constant value (cast to the appropriate type)
+                    constantValue = (string)fieldInfo.GetValue(null);  // null because it's static
+                }
+                if (methodInfo != null)
+                {
+                    methodInfo.Invoke(null, [5, 5, constantValue]);
+                    Console.WriteLine();
 
-            patternName = "Number-increasing Pyramid Pattern";
-            Patterns.Pattern12(5, patternName);
-            Console.WriteLine();
+                }
+            }
 
-            patternName = "Number-increasing reverse Pyramid Pattern";
-            Patterns.Pattern13(5 , patternName);
-            Console.WriteLine();
+          
+            //List<int> list = new List<int>() { 11, 2, 13, 1, 4, 14, 4, 14, 5, 5, 15, 6 };
+            //var result = ContinueWithList.List01(list);
+            //foreach (var e in result)
+            //{
+            //    Console.WriteLine(e);
+            //}
+            //Console.WriteLine();
 
-            patternName = "Number-changing Pyramid Pattern";
-            Patterns.Pattern14(5 , patternName);
-            Console.WriteLine();
+            //List<int> list1 = new List<int>() { 11, 2, 13, 1, 4, 14, 4, 14, 5, 5, 15, 6 };
+            //var result2 = ContinueWithList.List02(list1);
+            //foreach (var e in result2)
+            //{
+            //    Console.WriteLine(e);
+            //}
 
-            patternName = "Zero-One Triangle Pattern";
-            Patterns.Pattern15(5 , patternName);
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            patternName = "Palindrome Triangle Pattern";
-            Patterns.Pattern16(5 , patternName);
-            Console.WriteLine();
-
-            patternName = "Palindrome Triangle Pattern";
-            Patterns.Pattern17(5, patternName);
-            Console.WriteLine();
+            //Console.Write(ContinueWithList.Number(5));
+            //Console.WriteLine();
 
         }
     }

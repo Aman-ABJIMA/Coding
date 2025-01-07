@@ -178,7 +178,7 @@
                 Console.WriteLine();
             }
         }
-        public static void Pattern11(int r,string name)
+        public static void Pattern11(int r,int c,string name)
         {
             Console.WriteLine(name);
             for (int i = 1; i <= r; i++)
@@ -194,7 +194,7 @@
                 Console.WriteLine();
             }            
         }
-        public static void Pattern12(int r,string name)
+        public static void Pattern12(int r,int c,string name)
         {
             Console.WriteLine(name);
             for (int i = 1; i <= r; i++)
@@ -206,7 +206,7 @@
                 Console.WriteLine();
             }
         }
-        public static void Pattern13(int r,string name)
+        public static void Pattern13(int r,int c,string name)
         {
             Console.WriteLine(name);
             for (int i = r; i >= 1; i--)
@@ -218,35 +218,35 @@
                 Console.WriteLine();
             }
         }
-        public static void Pattern14(int r,string name)
+        public static void Pattern14(int r,int c,string name)
         {
             Console.WriteLine(name);
-            int c = 1;
+            int ch = 1;
             for (int i = 1; i <= r; i++)
             {
                 for (int j = 1; j <= i; j++)
                 {
-                    Console.Write(" "+Formatter(c));
-                    c++;
+                    Console.Write(" "+Formatter(ch));
+                    ch++;
                 }
                 Console.WriteLine();
             }
         }
-        public static void Pattern15(int r,string name)
+        public static void Pattern15(int r,int c,string name)
         {
             Console.WriteLine(name);
-            int c = 0;
+            int ch = 0;
             for (int i = 1; i <= r; i++)
             {
                 for (int j = 1; j <= i; j++)
                 {
-                    c = (c != 1) ? 1 : 0;
-                    Console.Write(c);
+                    ch = (ch != 1) ? 1 : 0;
+                    Console.Write(ch);
                 }
                 Console.WriteLine();
             }
         }
-        public static void Pattern16(int r,string name)
+        public static void Pattern16(int r,int c,string name)
         {
             Console.WriteLine(name);
             for (int i = 1; i <= r; i++)
@@ -266,7 +266,7 @@
                 Console.WriteLine();
             }
         }
-        public static void Pattern17(int r, string name)
+        public static void Pattern17(int r,int c, string name)
         {
             Console.WriteLine(name);
             for (int i = 1; i <= r; i++)
